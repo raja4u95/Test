@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+#
+# * Company:         proadvise GmbH   www.proadvise.com
+# * Author:          S. Korkmaz <Sedat.Korkmaz@proadvise.com>
+# * Create date:     19.04.2013 10:26:52
+# * Version:         1.0
+# * Description:     Konfigurations-Datei zu MikaP6Importer v.1.0.0
+# * Copyright(C):    proadvise GmbH 2013
+# *
+# * License agreement:
+# *
+# * Anmerkung: Diese Datei ist UTF-8 kodiert
+# * Anmerkung: Alle Angaben (auch <Protocol_Header>; Ausnahme: Kommentare) auf der gleichen Zeile angeben
+# *
+# * Anmerkung: Die Kapitelnummern entsprechen der Nummerierung der Spezifikation v.1.0.3
+-->
+
+<MikaP6Importer>
+    <Configuration>
+
+        <!-- 4.1.1.1 Inputdatei -->
+        <InputFile>
+            <!-- Dateiname: Die Schnittstelle sucht im Übergabeverzeichnis eine Excel-Datei
+                 (Endung .xls) mit diesem konfiguriertem Namen und einem Datumssuffix:
+                 sascia_p6_yyyy_MM_dd_hh_mm_ss.xls -->
+            <Inputfile_Name>sascia_p6</Inputfile_Name>
+            <!-- Spaltenueberschriften in der Inputdatei -->
+            <Col_Project>SAP-Nr.</Col_Project>
+            <Col_NPL>Standardnetzplan</Col_NPL>
+            <Col_Vorgang>Vorgang</Col_Vorgang>
+            <Col_beantragteMiKa>beantragte MiKa YTD</Col_beantragteMiKa>
+            <Col_weitergeleiteteMiKa>weitergeleitete MiKa YTD</Col_weitergeleiteteMiKa>
+			<!-- Legt fest, in welcher Spalte der Inputdatei der Wert „Sascia-ID“ hinterlegt ist. -->
+            <Col_SasciaID>Projekt-Nr</Col_SasciaID>
+            <!-- [Optional; Vorbelegung: ;] Legt das Spaltentrennzeichen der Csv-Datei fest. -->
+            <ColumnSeparator>;</ColumnSeparator>
+        </InputFile>
+
+        <!-- 4.1.1.3 Verzeichnisse -->
+        <File_Paths>
+            <!-- Pfad des File Share (Übergabeverzeichnis), in dem die Inputdatei zur
+            Weiterverarbeitung für die Schnittstelle bereitgestellt wird als
+            Absoluter Pfad, damit dieser vom Fachbereich aufgerufen werden kann -->
+            <Exchange_Path>G:\Log\SASCIA_P6_Intfc\Exchange</Exchange_Path>
+            <!-- Pfad des Archivverzeichnisses, in dem die verarbeiteten Inputdateien
+            abgelegt werden als Absoluter Pfad, damit dieser vom Fachbereich
+            aufgerufen werden kann -->
+            <Archive_Path>G:\Log\SASCIA_P6_Intfc\Archive</Archive_Path>
+            <!-- Pfad des Verzeichnisses, wohin die Dateien abgelegt werden, die
+            aufgrund von Fehlern nicht verarbeitet wurden als Absoluter Pfad, damit
+            dieser vom Fachbereich aufgerufen werden kann -->
+            <ErrFile_Path>G:\Log\SASCIA_P6_Intfc\Error</ErrFile_Path>
+			<!-- Legt den Dateinamen der Überleitungsdatei fest. Es darf nur eine
+            Überleitungsdatei im <Exchange_Path> existieren. -->
+            <Ueberleitungsdatei_Name>ueberleitung_sascia.csv</Ueberleitungsdatei_Name>
+            <!-- [Optional; Vorbelegung: ;] Legt das Spaltentrennzeichen der Csv-Datei fest. -->
+            <Ueberleitungsdatei_ColumnSeparator>;</Ueberleitungsdatei_ColumnSeparator>
+        </File_Paths>
+
+        <!-- 4.1.1.2 Oracle Primavera P6 Objekte -->
+        <P6_Attributes>
+            <!-- UDF-StandardNPL: Anhand dieses UDFs wird die Activity identifiziert. -->
+            <UDF-StandardNPL>UDF_EN_Standard_NPL</UDF-StandardNPL>
+            <!-- UDF-Vorgangsnummer: Anhand dieses UDFs wird die Activity identifiziert (in Kombinati-on mit <UDF-StandardNPL>). -->
+            <UDF-Vorgangsnummer>UDF_EN_Standard_Vorgangsnummer</UDF-Vorgangsnummer>
+            <!-- UDF-BeantragteMiKa: In dieses Feld wird der Wert beantragte MiKa YTD aus der Inputdatei übernommen. -->
+            <UDF-BeantragteMiKa>UDF_EN_Mehr-Minder-Aufwaende</UDF-BeantragteMiKa>
+			<!-- UDF-SasciaId: In dieses Feld wird der Wert SasciaID aus der Inputdatei uebernommen -->
+            <UDF-SasciaID>UDF_EN_Sascia-ID</UDF-SasciaID>
+        </P6_Attributes>
+
+        <!-- 4.1.1.4 Log- und Protokolldateien -->
+        <LogFiles>
+            <!-- Name der technischen Log-Datei (Diesem Namen wird von der Schnittstelle
+            ein Zeitstempel angehängt. Diese Datei erhält die Endung .log) -->
+            <LogFile_Name>SASCIA_P6</LogFile_Name>
+            <!-- Pfad der Log-Datei (Damit diese Datei vom FB aufgerufen warden kann,
+            muss diese als absoluter Pfad angegeben warden.) -->
+            <LogFile_Path>G:\Log\SASCIA_P6_Intfc\PrimaveraLogs</LogFile_Path>
+            <LogLevel>INFO</LogLevel>
+            <!-- 2.	Name und Pfad der Verarbeitungsprotokoll-Datei:
+             Dem Namen wird von der Schnittstelle ein Zeitstempel angehängt.
+             Diese Datei erhält die Endung .csv -->
+            <ProtocolFile_Name>Importprotocol_SASCIA_P6</ProtocolFile_Name>
+            <!-- Damit diese Datei vom FB aufgerufen warden kann, muss diese als
+            absoluter Pfad angegeben warden. -->
+            <ProtocolFile_Path>\\DEFTHW99M7NSRV.ad001.siemens.net\PMHCTEST_MIKA_SASCIA_P6_AFC_KRF_Log\protocol</ProtocolFile_Path>
+            <!-- Die Spaltenüberschriften der Protokoll-Datei
+            Die einzelnen Spalten müssen mit (;) getrennt aufgelistet werden. -->
+            <Protocol_Header>Zeile in Inputdatei;Message-Nr;Message-Art;Beschreibung;Projekt;Projektname;SPL-ID;Projekt-Nr;SAP-Nr.;Projekt Name;Segment;Gruppe;Netzplanbezeichnung;Netzplan;NPL;Vorgang;Vorgangs Bez.;Plan bei AE;beantragte MiKa aktueller Monat;beantragte MiKa YTD;weitergeleitete MiKa aktueller Monat;weitergeleitete MiKa YTD;Ist-Gesamt,Stunden noch benötigt aktueller Monat</Protocol_Header>
+        </LogFiles>
+
+        <!-- Daten für den DB- und Primavera P6-Login -->
+        <!-- 4.1.1.6	Connection-Parameter -->
+        <Connection>
+            <!-- Instanzname: Name der Datenbankinstanz -->
+            <DB_Instance>PMHCTEST</DB_Instance>
+            <!-- Name des Administrativen Primavera P6 Users -->
+            <P6_User>bw12primaz</P6_User>
+            <!-- Absoluter Pfad der PW-Datei -->
+            <PW_File>G:\Eclipse W\MikaP6Importer\config\MikaP6Importer_Accounts.pac</PW_File>
+        </Connection>
+
+		<!-- E-Mail Benachrichtigung. -->
+        <eMailHandle>
+            <!-- Soll die Nachrichtenfunktion eingeschaltet werden? 'true' oder 'false' -->
+            <Send_Mail>false</Send_Mail>
+            <!-- E-Mail Adresse des Empfaengers. -->
+            <eMail_to>primavera-support.it@siemens.com</eMail_to>
+            <!-- Mailadresse eines CC-Empfaengers (bis zu 10 cc-Empfaenger) -->
+            
+            <!-- Mailadresse eines CC-Empfaengers -->
+            <eMail_cc>heinrich.lebioda@siemens.com</eMail_cc>
+            <!-- Mailadresse eines CC-Empfaengers -->
+            
+            <!-- Mailadresse eines CC-Empfaengers -->
+            <eMail_cc></eMail_cc>
+            <!-- Mailadresse des Absenders -->
+            <eMail_from>primavera-support.it@siemens.com</eMail_from>
+            <!-- Betreff -->
+            <eMail_subject>Mika P6 Importer PMHCTEST</eMail_subject>
+            <!-- smtp-Server -->
+            <smtp_host>mail.siemens.de</smtp_host>
+            <!-- smtp-Server Benutzername -->
+            <smtp_user></smtp_user>
+            <!-- smtp-Server Kennwort (verschluesselt) -->
+            <smtp_module>SMTP</smtp_module>
+            <!-- smtp-Authentifizierung aktivieren? 'true' oder 'false' -->
+            <smtp_auth>false</smtp_auth>
+        </eMailHandle>
+
+    </Configuration>
+</MikaP6Importer>
