@@ -1,8 +1,6 @@
 Hallo,
 
-die Schnittstelle $jobname ist mit folgender Fehlermeldung abgebrochen:
-
-$error
+die Schnittstelle $jobname ist erfolgreich durchgelaufen.
 
 Sie finden das Verarbeitungsprotokoll unter:
 
