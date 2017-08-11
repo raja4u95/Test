@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><BootStrap xmlns:xalan="http://xml.apache.org/xslt">
    <Database>
-      <URL>jdbc:oracle:thin:@sap05039.os.fth.sbs.de:6201:PMHCTEST</URL>
+      <URL>jdbc:oracle:thin:@sap01950.os.fth.sbs.de:6201:PMLCPROD</URL>
       <UserName>pubuser</UserName>
-      <Password>AE040FAA0FCED2BB6972CC00DFABCBC0052AC48C1A22B4469963C2BCA369087D2FDE62B90A5B172AA34EF2E1C98184A8AE59AE04</Password>
+      <Password>AE04F0BE3C4DBAD6BB5A089F8424887FE4DF7EC81F536D69C774FCC21B6A8A172EE5CA9449E5C016C5C15071461497C74A08AE04</Password>
       <Driver>oracle.jdbc.OracleDriver</Driver>
       <PublicGroupId>1</PublicGroupId>
    </Database>
    <CfgVersion>16.210</CfgVersion>
    <Configurations>
-      <BRE name="SASCIA_P6Schnittstelle_IF" instances="1" logDir="G:\P6EPPM_162\p6\WebAccessLogs"/>
+      <BRE name="Schnittstelle SAP-P6 Werk MUC" instances="1" logDir="D:\P6EPPM_162\p6\WebAccessLogs"/>
    </Configurations>
 </BootStrap>
